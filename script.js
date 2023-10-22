@@ -4,4 +4,6 @@ function addTodo(event) {
     event.preventDefault();
 }
 
-document.getElementById("submitTodo").addEventListener("submit",addTodo)
+document.getElementById("submitTodo").addEventListener("submit",(event)=>{
+    todos=addTodo(event,todos)
+})
