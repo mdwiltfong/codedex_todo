@@ -1,4 +1,4 @@
-const todos=[];
+let todos=[];
 
 function addTodo(event) {
     event.preventDefault();
