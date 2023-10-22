@@ -6,4 +6,4 @@ This repo contains the assets for the To-do list project in Codédex. Each stage
 
 ## Branches
 
-- Project Setup
+- main (intial project setup)
