@@ -1,1 +1,7 @@
-document.getElementById("demo").innerHTML = "Hello JavaScript";
+const todos=[];
+
+function addTodo(event) {
+    event.preventDefault();
+}
+
+document.getElementById("submitTodo").addEventListener("submit",addTodo)
