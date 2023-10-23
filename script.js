@@ -41,3 +41,4 @@ document.getElementById("submitTodo").addEventListener("submit", (event) => {
   todos = addTodo(event, todos);
   renderTodos(todos);
 });
+document;
