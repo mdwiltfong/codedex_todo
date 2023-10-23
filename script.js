@@ -20,19 +20,12 @@ function addTodo(event, todos) {
 }
 
 function renderTodos(todos) {
-  todoListElement.innerHTML = "";
-  todos.forEach((todo) => {
-    const newTodoHTML = generateTodoHTML(todo);
-    todoListElement.appendChild(newTodoHTML);
-  });
-
-  return newTodoDiv;
+  const todoListHTML = todos.map(generateTodoHTML).join("");
+  todoListElement.innerHTML = todoListHTML;
 }
 
 function generateTodoHTML(todo) {
-  const newTodoDiv = document.createElement("div");
-  newTodoDiv.className = "card todo";
-  newTodoDiv.innerHTML = `
+  return `
    <div class="card-body">
                         <h5 class="card-title">${todo.todoTitle}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${todo.todoDate}</h6>
@@ -42,7 +35,6 @@ function generateTodoHTML(todo) {
                         <button class="btn btn-danger">Delete</button>
                     </div>
     `;
-  return newTodoDiv;
 }
 
 document.getElementById("submitTodo").addEventListener("submit", (event) => {
