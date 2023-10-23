@@ -17,9 +17,11 @@
     <div class="container">
         <div id="todo-list">
             <template id="todo">
-                <div class="card">
+                <div class="card todo">
                     <div class="card-body">
                         <h5 class="card-title">Todo</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Date</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Number of People Assigned</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
                             card's
@@ -29,26 +31,27 @@
                     </div>
                 </div>
             </template>
-            <form id="submitTodo">
-                <div class="mb-3">
-                    <label for="todo-title" class="form-label">Todo Title</label>
-                    <input type="text" class="form-control" id="todo-title">
-                </div>
-                <div class="mb-3">
-                    <label for="numofpeople"> Number of People Assigned</label>
-                    <input type="number" name="numofpeople" id="numofpeople">
-                </div>
-                <div>
-                    <label for="todo-date">Date</label>
-                    <input type="date" name="todo-date" id="todo-date">
-                </div>
-                <div class="mb-3">
-                    <label for="todo-description" class="form-label">Todo Description</label>
-                    <textarea class="form-control" id="todo-description" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Todo</button>
-            </form>
+
         </div>
+        <form id="submitTodo">
+            <div class="mb-3">
+                <label for="todo-title" class="form-label">Todo Title</label>
+                <input type="text" class="form-control" id="todo-title">
+            </div>
+            <div class="mb-3">
+                <label for="numofpeople"> Number of People Assigned</label>
+                <input type="number" name="numofpeople" id="numofpeople">
+            </div>
+            <div>
+                <label for="todo-date">Date</label>
+                <input type="date" name="todo-date" id="todo-date">
+            </div>
+            <div class="mb-3">
+                <label for="todo-description" class="form-label">Todo Description</label>
+                <textarea class="form-control" id="todo-description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Todo</button>
+        </form>
     </div>
 
 </body>
