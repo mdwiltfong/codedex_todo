@@ -10,9 +10,10 @@ todo={
 }
 */
 let todos = [];
+let errors = [];
 let todoListElement = document.getElementById("todo-list");
 let editForm = document.getElementById("editForm");
-function addTodo(event, todos) {
+function addTodo(event, todos, validateCallback) {
   event.preventDefault();
   const todoTitle = event.target[0].value;
   const todoNumOfPeople = event.target[1].value;
@@ -24,6 +25,11 @@ function addTodo(event, todos) {
     todoDate,
     todoDescription,
   };
+  errors = validateCallback(todo, errors);
+  if (errors.length > 0) {
+    alert("Uh oh! There are some errors in your form \n" + errors.join("\n"));
+    return todos;
+  }
   const newTodos = [...todos, todo];
   return newTodos;
 }
@@ -53,8 +59,25 @@ function completeTodo(todos, todoId) {
   return todos;
 }
 
+function validateTodo(todo, errors) {
+  errors = [];
+  if (todo.todoTitle.length < 5) {
+    errors.push("Todo title must be at least 5 characters long");
+  }
+  if (todo.todoNumOfPeople < 1) {
+    errors.push("Number of people must be greater than 0");
+  }
+  if (todo.todoDate < Date.now()) {
+    errors.push("Date must be in the future");
+  }
+  if (todo.todoDescription.length < 10) {
+    errors.push("Description must be at least 10 characters long");
+  }
+  return errors;
+}
+
 document.getElementById("submitTodo").addEventListener("submit", (event) => {
-  todos = addTodo(event, todos);
+  todos = addTodo(event, todos, validateTodo);
   renderTodos(todos);
 });
 
