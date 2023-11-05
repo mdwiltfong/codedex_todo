@@ -68,7 +68,7 @@ function validateTodo(todo, errors) {
     errors.push("Number of people must be greater than 0");
   }
   if (todo.todoDate == "Invalid Date") {
-    errors.push("Date must be in the format YYYY-MM-DD");
+    errors.push("Date must be in the format of YYYY-MM-DD");
   }
   if (todo.todoDate.getTime() < Date.now()) {
     errors.push("Date must be in the future");
