@@ -1,5 +1,18 @@
+/*
+Project memory. This will contain all the todos that are created by the user.
+
+todo={
+    todoTitle,
+    todoNumOfPeople,
+    todoDate,
+    todoDescription,
+    isEditting
+}
+*/
 let todos = [];
+let errors = [];
 let todoListElement = document.getElementById("todo-list");
+let editForm = document.getElementById("editForm");
 function addTodo(event, todos, validateCallback) {
   event.preventDefault();
   const todoTitle = event.target[0].value;
@@ -40,9 +53,30 @@ function generateTodoHTML(todo, index) {
 </div>    
     `;
 }
+
 function completeTodo(todos, todoId) {
   todos.splice(todoId, 1);
   return todos;
+}
+
+function validateTodo(todo, errors) {
+  errors = [];
+  if (todo.todoTitle.length < 5) {
+    errors.push("Todo title must be at least 5 characters long");
+  }
+  if (todo.todoNumOfPeople < 1) {
+    errors.push("Number of people must be greater than 0");
+  }
+  if (todo.todoDate == "Invalid Date") {
+    errors.push("Date must be in the format of YYYY-MM-DD");
+  }
+  if (todo.todoDate.getTime() < Date.now()) {
+    errors.push("Date must be in the future");
+  }
+  if (todo.todoDescription.length < 10) {
+    errors.push("Description must be at least 10 characters long");
+  }
+  return errors;
 }
 
 document.getElementById("submitTodo").addEventListener("submit", (event) => {
