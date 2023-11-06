@@ -1,5 +1,5 @@
+let todos = [];
 let todoListElement = document.getElementById("todo-list");
-let editForm = document.getElementById("editForm");
 function addTodo(event, todos, validateCallback) {
   event.preventDefault();
   const todoTitle = event.target[0].value;
@@ -40,8 +40,22 @@ function generateTodoHTML(todo, index) {
 </div>    
     `;
 }
+function completeTodo(todos, todoId) {
+  todos.splice(todoId, 1);
+  return todos;
+}
 
 document.getElementById("submitTodo").addEventListener("submit", (event) => {
   todos = addTodo(event, todos, validateTodo);
   renderTodos(todos);
+});
+
+document.getElementById("todo-list").addEventListener("click", (event) => {
+  if (event.target.id === "done") {
+    todos = completeTodo(
+      todos,
+      event.target.parentElement.getAttribute("data-se")
+    );
+    renderTodos(todos);
+  }
 });
