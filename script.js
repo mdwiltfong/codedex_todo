@@ -1,10 +1,10 @@
 let todoListElement = document.getElementById("todo-list");
 let editForm = document.getElementById("editForm");
-function addTodo(event, todos, validateCallback) {
+function addTodo(event, todos) {
   event.preventDefault();
   const todoTitle = event.target[0].value;
   const todoNumOfPeople = event.target[1].value;
-  const todoDate = new Date(event.target[2].value);
+  const todoDate = event.target[2].value;
   const todoDescription = event.target[3].value;
   const todo = {
     todoTitle,
@@ -12,11 +12,7 @@ function addTodo(event, todos, validateCallback) {
     todoDate,
     todoDescription,
   };
-  errors = validateCallback(todo, errors);
-  if (errors.length > 0) {
-    alert("Uh oh! There are some errors in your form \n" + errors.join("\n"));
-    return todos;
-  }
+
   const newTodos = [...todos, todo];
   return newTodos;
 }
@@ -42,6 +38,6 @@ function generateTodoHTML(todo, index) {
 }
 
 document.getElementById("submitTodo").addEventListener("submit", (event) => {
-  todos = addTodo(event, todos, validateTodo);
+  todos = addTodo(event, todos);
   renderTodos(todos);
 });
