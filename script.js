@@ -1,3 +1,4 @@
+let todos=[];
 let todoListElement = document.getElementById("todo-list");
 let editForm = document.getElementById("editForm");
 function addTodo(event, todos) {
