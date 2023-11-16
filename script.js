@@ -17,7 +17,7 @@ function addTodo(event, todos, validateCallback) {
   event.preventDefault();
   const todoTitle = event.target[0].value;
   const todoNumOfPeople = event.target[1].value;
-  const todoDate = new Date(event.target[2].value);
+  const todoDate = event.target[2].value;
   const todoDescription = event.target[3].value;
   const todo = {
     todoTitle,
@@ -67,10 +67,7 @@ function validateTodo(todo, errors) {
   if (todo.todoNumOfPeople < 1) {
     errors.push("Number of people must be greater than 0");
   }
-  if (todo.todoDate == "Invalid Date") {
-    errors.push("Date must be in the format of YYYY-MM-DD");
-  }
-  if (todo.todoDate.getTime() < Date.now()) {
+  if (todo.todoDate < Date.now()) {
     errors.push("Date must be in the future");
   }
   if (todo.todoDescription.length < 10) {
